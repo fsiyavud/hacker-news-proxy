@@ -10,6 +10,7 @@ app.use(cors());
 // Handle requests to fetch the main news page or any paginated page
 app.get('/news', async (req, res) => {
     try {
+        console.log(req.query)
         const nextPage = req.query.page || 'news';
         const hackerNewsUrl = `https://news.ycombinator.com/${nextPage}`;
 
