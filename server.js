@@ -7,12 +7,17 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
+// Handle requests to fetch the main news page or any paginated page
 app.get('/news', async (req, res) => {
     try {
-        const response = await axios.get('https://news.ycombinator.com/news');
+        const nextPage = req.query.page || 'news';
+        const hackerNewsUrl = `https://news.ycombinator.com/${nextPage}`;
+
+        console.log(`Fetching page: ${hackerNewsUrl}`);
+        const response = await axios.get(hackerNewsUrl);
         res.send(response.data);
     } catch (error) {
-        res.status(500).send('Error fetching news');
+        res.status(500).send('Error fetching Hacker News');
     }
 });
 
