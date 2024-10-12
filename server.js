@@ -11,7 +11,8 @@ app.use(cors());
 app.get('/news', async (req, res) => {
     try {
         console.log(req.query)
-        const nextPage = req.query.page || 'news';
+        const nextPage = req.query.p || 'news';
+        console.log(nextPage)
         const hackerNewsUrl = `https://news.ycombinator.com/${nextPage}`;
 
         console.log(`Fetching page: ${hackerNewsUrl}`);
