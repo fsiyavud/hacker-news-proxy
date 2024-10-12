@@ -13,7 +13,7 @@ app.get('/news', async (req, res) => {
         console.log(req.query)
         const nextPage = req.query.p || 'news';
         console.log(nextPage)
-        const hackerNewsUrl = `https://news.ycombinator.com/${nextPage}`;
+        const hackerNewsUrl = `https://news.ycombinator.com?p=${nextPage}`;
 
         console.log(`Fetching page: ${hackerNewsUrl}`);
         const response = await axios.get(hackerNewsUrl);
