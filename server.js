@@ -82,7 +82,7 @@ app.get('/api/news', async (req, res) => {
     }
 });
 
-// Default route to handle HTML scraping
+// Returns formatted HTML from Hacker News
 app.get('/news', async (req, res) => {
     try {
         const hackerNewsUrl = getNewsUrl(req);
@@ -92,6 +92,11 @@ app.get('/news', async (req, res) => {
     } catch (error) {
         res.status(500).send('Error fetching Hacker News');
     }
+});
+
+// Ping API for health check
+app.get('/ping', (req, res) => {
+    res.send('OK');
 });
 
 app.listen(PORT, () => {
